@@ -1,10 +1,30 @@
 {% extends "base.html" %}
+{% load compress static %}
 
-{% block content %}
-  <h2>Sign up</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign Up</button>
-  </form>
+{% block css %}
+{{block.super}}
+{% compress css %}
+    <link type="text/x-scss" href="{% static 'scss/accounts.scss' %}" rel="stylesheet" media="screen">
+{% endcompress %}
+{% endblock css %}
+
+{% block content %} 
+
+    <div class="form-wrapper" style="background-image: url({% static "img/background.jpg" %});">
+      <form method="POST">
+        <h2>Register</h2>
+        {% if form.errors %}
+          <div class="">
+            {{ form.errors }}
+          </div>
+        {% endif %}
+        {% csrf_token %}
+        <input type="text" name="username" placeholder="Username">
+        <input type="password" name="password1" placeholder="Password" >
+        <input type="password" name="password2" placeholder="Confirm Password">
+        <input type="submit" value="Submit" class="btn btn-primary">
+        <p>Heb je een account? <a href="{% url "login" %}">Login</a></p>
+      </form>
+    </div>
+
 {% endblock %}
