@@ -1,12 +1,29 @@
 .index-wrapper {
     width: 100vw;
     height: 100vh;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.todo-item {
+    padding-top: 5rem;
+    .create-new-button-wrapper {
+        display: flex;
+        align-items: center;
+        padding: 2rem;
+    }
+    .dates {
+        margin-bottom: 1rem;
+
+        p {
+            margin: 0;
+        }
+    }
 }
 
 .bg-glass {
-    background: rgba(255, 255, 255, 0.275);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(1.9px);
-    -webkit-backdrop-filter: blur(1.9px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
 }

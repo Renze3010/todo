@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% load static compress %}
+
+{% block css %}
+    {{block.super}}
+    {% compress css %}
+        <link type="text/x-scss" href="{% static 'scss/accounts.scss' %}" rel="stylesheet" media="screen">
+    {% endcompress %}
+{% endblock css %}
+
+{% block content %}
+<div class="form-wrapper" style="background-image: url({% static "img/background.jpg" %});">
+    <form method="POST">
+      <h2>Create new item</h2>
+      {% csrf_token %}
+      {{form}}
+      <input type="submit" value="Submit" class="btn btn-primary">
+    </form>
+  </div>
+{% endblock content %}

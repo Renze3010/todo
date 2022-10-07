@@ -13,7 +13,32 @@
 {% block content %}
 
 <div class="index-wrapper">
-    <div class="todo-item bg-glass">
+    <div class="todo-item container">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            {% for item in items %}
+                <div class="col">
+                    <div class="card bg-glass text-light">
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.name}}</h5>
+                            <p class="card-text">{{item.description}}</p>
+                            <div class="dates text-secondary">
+                                <p>Created: {{item.date}}</p>
+                                <p>Deadline: {{item.deadline}}</p>
+                            </div>
+                            <form action="{% url "delete" item.pk %}" method = "POST">{% csrf_token %}
+                                <input type="submit" class="btn btn-primary" value="Done">
+                            </form>  
+                        </div>
+                        <div class="card-footer text-muted">
+
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="create-new-button-wrapper">
+            <a href="{% url 'create' %}" class="btn btn-primary m-auto ">Create a todo item</a>
+        </div>
 
     </div>
 </div>
